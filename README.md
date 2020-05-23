@@ -2,5 +2,5 @@
 
 ## Objetivos
 
-- Aplicar a las vistas de Inicio y Usuarios los diseños previamente realizados en **Sketch** y con su posterior importación a **Zeplin**
+- Sobre la práctica realizada en el módulo de *Concurrencia y Red*, aplicar los diseños realizados en **Sketch** y su posterior importación a **Zeplin**
 
