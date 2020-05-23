@@ -127,14 +127,11 @@ extension UsersViewController: UITableViewDataSource {
         cell.textLabel?.text = user.username
 
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            /*
-             Cuidado con los force unwrap (!) que pueden inducir a casques. En este caso es complicado que se prduzca,
-             pero no nos acostumbremos a usarlos.
-             */
-            let avatar = user.avatar.replacingOccurrences(of: "{size}", with: String(self!.sizeImage))
+            guard let sizeImage = self?.sizeImage else { return }
+            let avatar = user.avatar.replacingOccurrences(of: "{size}", with: String(sizeImage))
             let pathAvatar = "https://mdiscourse.keepcoding.io\(avatar)"
-            guard let urlAvatar = URL(string: pathAvatar) else { return }
 
+            guard let urlAvatar = URL(string: pathAvatar) else { return }
             // Aquí se produce realmente el proceso costoso
             let data = try? Data.init(contentsOf: urlAvatar)
 

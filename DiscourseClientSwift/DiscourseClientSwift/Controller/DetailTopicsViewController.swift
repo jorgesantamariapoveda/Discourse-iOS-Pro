@@ -86,7 +86,7 @@ extension DetailTopicsViewController {
             // hará de modo strong generando una referencia fuerte e impidiendo
             // que ARC realice su trabajo. Con [weak self] evitamos dicho comportamiento
             if result == true {
-                self?.delegate?.reloadLatestTopics()
+                self?.delegate?.deleteTopic()
                 self?.navigationController?.popViewController(animated: true)
             } else {
                 self?.showAlert(title: "DELETE", message: CustomTypeError.unknowError.descripcion)
