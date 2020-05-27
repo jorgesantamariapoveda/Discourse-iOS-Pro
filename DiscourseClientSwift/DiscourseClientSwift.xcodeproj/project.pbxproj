@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF13615D24276AFE007495EE /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13615C24276AFE007495EE /* ExtensionViewController.swift */; };
+		CF13615D24276AFE007495EE /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13615C24276AFE007495EE /* UIViewController+Ext.swift */; };
 		CF13616124278A43007495EE /* CreateTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13615F24278A43007495EE /* CreateTopicViewController.swift */; };
 		CF13616224278A43007495EE /* CreateTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF13616024278A43007495EE /* CreateTopicViewController.xib */; };
 		CF2CE21F2423799D007FA314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CE21E2423799D007FA314 /* AppDelegate.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CF13615C24276AFE007495EE /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
+		CF13615C24276AFE007495EE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		CF13615F24278A43007495EE /* CreateTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopicViewController.swift; sourceTree = "<group>"; };
 		CF13616024278A43007495EE /* CreateTopicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTopicViewController.xib; sourceTree = "<group>"; };
 		CF2CE21B2423799D007FA314 /* DiscourseClientSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscourseClientSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +84,7 @@
 			children = (
 				CF7E9567247EF46C006A3F70 /* UIColor+Additions.swift */,
 				CF7E9566247EF46C006A3F70 /* UIFont+Additions.swift */,
-				CF13615C24276AFE007495EE /* ExtensionViewController.swift */,
+				CF13615C24276AFE007495EE /* UIViewController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 				CF83C9222426229300BE7D48 /* LatestTopicsResponse.swift in Sources */,
 				CF7E9569247EF46C006A3F70 /* UIColor+Additions.swift in Sources */,
 				CF13616124278A43007495EE /* CreateTopicViewController.swift in Sources */,
-				CF13615D24276AFE007495EE /* ExtensionViewController.swift in Sources */,
+				CF13615D24276AFE007495EE /* UIViewController+Ext.swift in Sources */,
 				CFFE99DE242F6D1700D1A20B /* DirectoryItemsResponse.swift in Sources */,
 				CFD19E5E242A01740089D278 /* TopicDelegate.swift in Sources */,
 				CF83C92524262B1E00BE7D48 /* DetailTopicsViewController.swift in Sources */,

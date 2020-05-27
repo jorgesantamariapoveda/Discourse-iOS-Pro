@@ -38,6 +38,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let usersNavigationController = UINavigationController(rootViewController: usersVC)
         let categoriesNavigationController = UINavigationController(rootViewController: categoriesVC)
 
+        topicsNavigationController.navigationBar.barTintColor = .white82
+        usersNavigationController.navigationBar.barTintColor = .white82
+        categoriesNavigationController.navigationBar.barTintColor = .white82
+
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
                                 topicsNavigationController,
