@@ -9,6 +9,6 @@
 import Foundation
 
 protocol TopicDelegate {
+    func newTopic()
     func deleteTopic()
-    func postTopic()
 }

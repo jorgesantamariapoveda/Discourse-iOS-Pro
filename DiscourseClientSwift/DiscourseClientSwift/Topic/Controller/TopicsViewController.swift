@@ -160,11 +160,11 @@ extension TopicsViewController: UITableViewDelegate {
 
 extension TopicsViewController: TopicDelegate {
 
-    func deleteTopic() {
+    func newTopic() {
         setupData()
     }
-
-    func postTopic() {
+    
+    func deleteTopic() {
         setupData()
     }
 

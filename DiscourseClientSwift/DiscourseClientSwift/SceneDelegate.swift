@@ -26,10 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                 title: "Inicio",
                                 image: UIImage(named: "inicioUnselected"),
                                 selectedImage: UIImage(named: "inicio"))
+
         usersVC.tabBarItem = UITabBarItem(
                                 title: "Usuarios",
                                 image: UIImage(named: "usuariosUnselected"),
                                 selectedImage: UIImage(named: "usuarios"))
+
         categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(systemName: "tag.fill"), tag: 1)
 
         let topicsNavigationController = UINavigationController(rootViewController: topicsVC)
@@ -38,9 +40,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
-                            topicsNavigationController,
-                            usersNavigationController,
-                            categoriesNavigationController
+                                topicsNavigationController,
+                                usersNavigationController,
+                                categoriesNavigationController
         ]
         tabBarController.tabBar.barTintColor = .white82
         tabBarController.tabBar.tintColor = .brownGrey
@@ -77,7 +79,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 
 }
 

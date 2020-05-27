@@ -58,7 +58,7 @@ extension CreateTopicViewController {
                 // hará de modo strong generando una referencia fuerte e impidiendo
                 // que ARC realice su trabajo. Con [weak self] evitamos dicho comportamiento
                 if result == true {
-                    self?.delegate?.postTopic()
+                    self?.delegate?.newTopic()
                     self?.dismiss(animated: true, completion: nil)
                 } else {
                     self?.showAlert(title: "POST", message: CustomTypeError.unknowError.descripcion)

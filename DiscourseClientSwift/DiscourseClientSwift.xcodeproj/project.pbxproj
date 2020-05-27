@@ -108,11 +108,10 @@
 		CF2CE21D2423799D007FA314 /* DiscourseClientSwift */ = {
 			isa = PBXGroup;
 			children = (
-				CFD19E5C242A013B0089D278 /* Protocol */,
-				CF13615E24276B50007495EE /* Extension */,
-				CFD1F37E2424B55900740BB9 /* Model */,
-				CFD1F37F2424B56200740BB9 /* View */,
-				CFD1F3802424B56B00740BB9 /* Controller */,
+				CF32495B247F0AB4004A603E /* Common */,
+				CF32495C247F0B20004A603E /* Topic */,
+				CF324961247F0BD1004A603E /* Users */,
+				CF324957247F0A2A004A603E /* Categories */,
 				CF2CE21E2423799D007FA314 /* AppDelegate.swift */,
 				CF2CE2202423799D007FA314 /* SceneDelegate.swift */,
 				CF2CE2272423799E007FA314 /* Assets.xcassets */,
@@ -122,16 +121,125 @@
 			path = DiscourseClientSwift;
 			sourceTree = "<group>";
 		};
-		CF78E135243A41470087F977 /* Response */ = {
+		CF324957247F0A2A004A603E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CF324958247F0A43004A603E /* Model */,
+				CF324959247F0A59004A603E /* View */,
+				CF32495A247F0A6D004A603E /* Controller */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CF324958247F0A43004A603E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				CFD1F38F2424EDFF00740BB9 /* CategoriesResponse.swift */,
-				CFFE99DD242F6D1700D1A20B /* DirectoryItemsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF324959247F0A59004A603E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1F3862424B62C00740BB9 /* CategoriesViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF32495A247F0A6D004A603E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1F3852424B62C00740BB9 /* CategoriesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF32495B247F0AB4004A603E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CF13615E24276B50007495EE /* Extension */,
+				CFD1F38D2424C9D200740BB9 /* Constants.swift */,
+				CFD1F3912424EE6100740BB9 /* CustomTypeError.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CF32495C247F0B20004A603E /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+				CF32495D247F0B28004A603E /* Model */,
+				CF32495E247F0B2F004A603E /* View */,
+				CF32495F247F0B35004A603E /* Controller */,
+			);
+			path = Topic;
+			sourceTree = "<group>";
+		};
+		CF32495D247F0B28004A603E /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				CF83C9212426229300BE7D48 /* LatestTopicsResponse.swift */,
-				CFA6EE3F2439DEE8007E80A4 /* UserResponse.swift */,
 				CF3CE73724407A6F00A9BC1D /* SingleTopicResponse.swift */,
 			);
-			path = Response;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF32495E247F0B2F004A603E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1F3822424B61000740BB9 /* TopicsViewController.xib */,
+				CF83C92424262B1E00BE7D48 /* DetailTopicsViewController.xib */,
+				CF13616024278A43007495EE /* CreateTopicViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF32495F247F0B35004A603E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CFD19E5C242A013B0089D278 /* Protocol */,
+				CFD1F3812424B61000740BB9 /* TopicsViewController.swift */,
+				CF83C92324262B1E00BE7D48 /* DetailTopicsViewController.swift */,
+				CF13615F24278A43007495EE /* CreateTopicViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF324961247F0BD1004A603E /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				CF324964247F0BF9004A603E /* Controller */,
+				CF324963247F0BF2004A603E /* View */,
+				CF324962247F0BEC004A603E /* Model */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		CF324962247F0BEC004A603E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFFE99DD242F6D1700D1A20B /* DirectoryItemsResponse.swift */,
+				CFA6EE3F2439DEE8007E80A4 /* UserResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF324963247F0BF2004A603E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1F38A2424B63D00740BB9 /* UsersViewController.xib */,
+				CF3838E12430938E001F8FDE /* DetailUserViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF324964247F0BF9004A603E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1F3892424B63D00740BB9 /* UsersViewController.swift */,
+				CF3838E02430938E001F8FDE /* DetailUserViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CFD19E5C242A013B0089D278 /* Protocol */ = {
@@ -140,42 +248,6 @@
 				CFD19E5D242A01740089D278 /* TopicDelegate.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		CFD1F37E2424B55900740BB9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CF78E135243A41470087F977 /* Response */,
-				CFD1F38D2424C9D200740BB9 /* Constants.swift */,
-				CFD1F3912424EE6100740BB9 /* CustomTypeError.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CFD1F37F2424B56200740BB9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CFD1F3822424B61000740BB9 /* TopicsViewController.xib */,
-				CF83C92424262B1E00BE7D48 /* DetailTopicsViewController.xib */,
-				CF13616024278A43007495EE /* CreateTopicViewController.xib */,
-				CFD1F3862424B62C00740BB9 /* CategoriesViewController.xib */,
-				CFD1F38A2424B63D00740BB9 /* UsersViewController.xib */,
-				CF3838E12430938E001F8FDE /* DetailUserViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		CFD1F3802424B56B00740BB9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CFD1F3812424B61000740BB9 /* TopicsViewController.swift */,
-				CF83C92324262B1E00BE7D48 /* DetailTopicsViewController.swift */,
-				CF13615F24278A43007495EE /* CreateTopicViewController.swift */,
-				CFD1F3852424B62C00740BB9 /* CategoriesViewController.swift */,
-				CFD1F3892424B63D00740BB9 /* UsersViewController.swift */,
-				CF3838E02430938E001F8FDE /* DetailUserViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
