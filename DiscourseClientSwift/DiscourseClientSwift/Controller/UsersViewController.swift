@@ -33,7 +33,7 @@ final class UsersViewController: UIViewController {
 extension UsersViewController {
 
     private func setupUI() {
-        self.title = "Users"
+        self.title = "Usuarios"
 
         tableView.dataSource = self
         tableView.delegate = self

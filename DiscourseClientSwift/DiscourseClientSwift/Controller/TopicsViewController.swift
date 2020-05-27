@@ -32,7 +32,7 @@ final class TopicsViewController: UIViewController {
 extension TopicsViewController {
 
     private func setupUI() {
-        self.title = "Topics"
+        self.navigationItem.title = "Temas"
 
         tableView.dataSource = self
         tableView.delegate = self
