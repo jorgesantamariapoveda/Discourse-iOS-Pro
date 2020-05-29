@@ -62,13 +62,13 @@ extension UsersViewController: UICollectionViewDataSource {
         cell.nameLabel.text = user.username
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let sizeImage = self?.sizeImage else { return }
+
             let avatar = user.avatar.replacingOccurrences(of: "{size}", with: String(sizeImage))
             let pathAvatar = "https://mdiscourse.keepcoding.io\(avatar)"
-
             guard let urlAvatar = URL(string: pathAvatar) else { return }
+
             // Aquí se produce realmente el proceso costoso
             let data = try? Data.init(contentsOf: urlAvatar)
-
             DispatchQueue.main.async {
                 if let data = data {
                     let image = UIImage(data: data)

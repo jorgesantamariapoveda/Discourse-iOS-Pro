@@ -10,25 +10,34 @@ import UIKit
 
 final class TopicsViewController: UIViewController {
 
-    // MARK: - Propierties
-
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
 
+    // MARK: - Properties
     private let idCell = "idCell"
     private var topics = [Topic]()
 
-    // MARK: - Basic functions
-
+    // MARK: - Life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setupData()
     }
+
+    // MARK: - IBActions
+    @IBAction func newTopicButtonTapped(_ sender: UIButton) {
+        let createTopicVC = CreateTopicViewController()
+        createTopicVC.delegate = self
+
+        let navigationController = UINavigationController(rootViewController: createTopicVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true, completion: nil)
+    }
+
 }
 
 // MARK: - Setups
-
 extension TopicsViewController {
 
     private func setupUI() {
@@ -37,18 +46,12 @@ extension TopicsViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: idCell)
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTopic))
     }
 
-    @objc private func addTopic() {
-        let createTopicVC = CreateTopicViewController()
-        createTopicVC.delegate = self
+}
 
-        let navigationController = UINavigationController(rootViewController: createTopicVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
-    }
+// MARK: - API operations
+extension TopicsViewController {
 
     private func setupData() {
         getLatestTopics { [weak self] (result) in
@@ -66,12 +69,6 @@ extension TopicsViewController {
             }
         }
     }
-
-}
-
-// MARK: - API operations
-
-extension TopicsViewController {
 
     private func getLatestTopics(completion: @escaping (Result<[Topic], Error>) -> Void) {
         let configuration = URLSessionConfiguration.default
@@ -124,7 +121,6 @@ extension TopicsViewController {
 }
 
 // MARK: - UITableViewDataSource
-
 extension TopicsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,14 +129,15 @@ extension TopicsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath)
+
         cell.textLabel?.text = topics[indexPath.row].title
+        
         return cell
     }
 
 }
 
 // MARK: - UITableViewDelegate
-
 extension TopicsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -157,7 +154,6 @@ extension TopicsViewController: UITableViewDelegate {
 }
 
 // MARK: - DetailTopicDelegate
-
 extension TopicsViewController: TopicDelegate {
 
     func newTopic() {

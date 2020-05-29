@@ -35,7 +35,6 @@ final class DetailTopicsViewController: UIViewController {
 extension DetailTopicsViewController {
 
     private func setupUI() {
-
         deleteButton.layer.cornerRadius = 4.0
         deleteButton.backgroundColor = UIColor(displayP3Red: 146/255.0, green: 178/255.0, blue: 121/255.0, alpha: 1.0)
         deleteButton.tintColor = .white
