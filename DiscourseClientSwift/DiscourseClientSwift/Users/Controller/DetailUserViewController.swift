@@ -10,18 +10,17 @@ import UIKit
 
 final class DetailUserViewController: UIViewController {
 
-    // MARK: - Propierties
-
+    // MARK: - IBOutlets
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var updateButton: UIButton!
 
+    // MARK: - Properties
     private var userName: String!
 
-    // MARK: - Basic functions
-
+    // MARK: - Life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,8 +29,7 @@ final class DetailUserViewController: UIViewController {
     }
 }
 
-// MARK: - Setups
-
+// MARK: - setupUI
 extension DetailUserViewController {
 
     private func setupUI() {
@@ -43,6 +41,35 @@ extension DetailUserViewController {
         updateButton.backgroundColor = UIColor(displayP3Red: 146/255.0, green: 178/255.0, blue: 121/255.0, alpha: 1.0)
         updateButton.tintColor = .white
     }
+
+}
+
+// MARK: - Public functions
+extension DetailUserViewController {
+
+    func setUsername(_ userName: String) {
+        self.userName = userName
+    }
+}
+
+// MARK: - IBActions
+extension DetailUserViewController {
+
+    @IBAction func updateButtonTapped(_ sender: UIButton) {
+        guard let name = nameTextField.text else { return }
+        putNameToUserName(newName: name, userName: userName) { [weak self] (resul) in
+            if resul == true {
+                self?.showAlert(title: "PUT", message: "Name actualizado con éxito")
+            } else {
+                self?.showAlert(title: "PUT", message: "Error")
+            }
+        }
+    }
+
+}
+
+// MARK: - API operations
+extension DetailUserViewController {
 
     private func setupData() {
         guard let userName = self.userName else { return }
@@ -70,37 +97,6 @@ extension DetailUserViewController {
             }
         }
     }
-}
-
-// MARK: - Public functions
-
-extension DetailUserViewController {
-
-    func setUsername(_ userName: String) {
-        self.userName = userName
-    }
-}
-
-// MARK: - IBActions
-
-extension DetailUserViewController {
-
-    @IBAction func updateButtonTapped(_ sender: UIButton) {
-        guard let name = nameTextField.text else { return }
-        putNameToUserName(newName: name, userName: userName) { [weak self] (resul) in
-            if resul == true {
-                self?.showAlert(title: "PUT", message: "Name actualizado con éxito")
-            } else {
-                self?.showAlert(title: "PUT", message: "Error")
-            }
-        }
-    }
-
-}
-
-// MARK: - API operations
-
-extension DetailUserViewController {
 
     private func getUser(userName: String, completion: @escaping (Result<User, Error>) -> Void) {
         let configuration = URLSessionConfiguration.default

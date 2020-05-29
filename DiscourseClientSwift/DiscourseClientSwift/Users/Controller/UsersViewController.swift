@@ -35,6 +35,7 @@ extension UsersViewController {
         let nib = UINib(nibName: "UserCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: UserCollectionViewCell.cellId)
         collectionView.dataSource = self
+        collectionView.delegate = self
 
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         flowLayout.sectionInset = UIEdgeInsets(top: 24, left: 26, bottom: 24, right: 26)
@@ -80,6 +81,20 @@ extension UsersViewController: UICollectionViewDataSource {
         return cell
     }
 
+}
+
+// MARK: - UICollectionViewDelegate
+extension UsersViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let user = directoryItems[indexPath.row].user
+
+        let detailVC = DetailUserViewController()
+        detailVC.setUsername(user.username)
+
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 }
 
 // MARK: - API operations
