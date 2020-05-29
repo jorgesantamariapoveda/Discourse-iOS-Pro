@@ -40,7 +40,7 @@
 		CF13615C24276AFE007495EE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		CF13615F24278A43007495EE /* CreateTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopicViewController.swift; sourceTree = "<group>"; };
 		CF13616024278A43007495EE /* CreateTopicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTopicViewController.xib; sourceTree = "<group>"; };
-		CF2CE21B2423799D007FA314 /* DiscourseClientSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscourseClientSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF2CE21B2423799D007FA314 /* Discourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Discourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2CE21E2423799D007FA314 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF2CE2202423799D007FA314 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CF2CE2272423799E007FA314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		CF2CE21C2423799D007FA314 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CF2CE21B2423799D007FA314 /* DiscourseClientSwift.app */,
+				CF2CE21B2423799D007FA314 /* Discourse.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 			);
 			name = DiscourseClientSwift;
 			productName = DiscourseClientSwift;
-			productReference = CF2CE21B2423799D007FA314 /* DiscourseClientSwift.app */;
+			productReference = CF2CE21B2423799D007FA314 /* Discourse.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -488,7 +488,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = es.jsantamariap.DiscourseClientSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Discourse;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -506,7 +506,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = es.jsantamariap.DiscourseClientSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Discourse;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
