@@ -15,7 +15,7 @@ final class TopicsViewController: UIViewController {
 
     // MARK: - Properties
     private let idCell = "idCell"
-    private var topics = [Topic]()
+    private var latestTopics: LatestTopicsResponse?
 
     // MARK: - Life cycle functions
     override func viewDidLoad() {
@@ -43,9 +43,10 @@ extension TopicsViewController {
     private func setupUI() {
         self.navigationItem.title = "Temas"
 
+        let nib = UINib(nibName: "TopicCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: TopicCell.cellId)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idCell)
     }
 
 }
@@ -63,14 +64,14 @@ extension TopicsViewController {
                 print(error.descripcion)
             case .failure(let error):
                 print(error.localizedDescription)
-            case .success(let topics):
-                self?.topics = topics
+            case .success(let latestTopics):
+                self?.latestTopics = latestTopics
                 self?.tableView.reloadData()
             }
         }
     }
 
-    private func getLatestTopics(completion: @escaping (Result<[Topic], Error>) -> Void) {
+    private func getLatestTopics(completion: @escaping (Result<LatestTopicsResponse, Error>) -> Void) {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
 
@@ -93,7 +94,7 @@ extension TopicsViewController {
                     do {
                         let latestTopicsResponse = try JSONDecoder().decode(LatestTopicsResponse.self, from: dataset)
                         DispatchQueue.main.async {
-                            completion(.success(latestTopicsResponse.topicList.topics))
+                            completion(.success(latestTopicsResponse))
                         }
                     } catch let errorDecoding as DecodingError {
                         DispatchQueue.main.async {
@@ -124,15 +125,30 @@ extension TopicsViewController {
 extension TopicsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topics.count
+        guard let latestTopics = latestTopics else { return 0 }
+        return latestTopics.topicList.topics.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(
+                            withIdentifier: TopicCell.cellId,
+                            for: indexPath) as? TopicCell else {
+            return UITableViewCell()
+        }
 
-        cell.textLabel?.text = topics[indexPath.row].title
-        
-        return cell
+        //! Mejorar, esto es una chapuza
+        if let topic = latestTopics?.topicList.topics[indexPath.row] {
+            if let users = latestTopics?.users {
+                for user in users {
+                    if user.username == topic.lastPosterUsername {
+                        cell.configure(topic: topic, avatar: user.avatarTemplate)
+                        return cell
+                    }
+                }
+            }
+        }
+
+        return UITableViewCell()
     }
 
 }
@@ -141,7 +157,7 @@ extension TopicsViewController: UITableViewDataSource {
 extension TopicsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let topic = topics[indexPath.row]
+        guard let topic = latestTopics?.topicList.topics[indexPath.row] else { return }
 
         let detailVC = DetailTopicsViewController()
         detailVC.delegate = self

@@ -2,7 +2,7 @@
 //  UIFont+Additions.swift
 //  eh ho
 //
-//  Generated on Zeplin. (27/05/2020).
+//  Generated on Zeplin. (29/05/2020).
 //  Copyright (c) 2020 __MyCompanyName__. All rights reserved.
 //
 
@@ -20,6 +20,10 @@ extension UIFont {
 
   class var textStyle4: UIFont {
     return UIFont.systemFont(ofSize: 22.0, weight: .bold)
+  }
+
+  class var textStyle5: UIFont {
+    return UIFont.systemFont(ofSize: 17.0, weight: .semibold)
   }
 
   class var style27: UIFont {
@@ -40,10 +44,6 @@ extension UIFont {
 
   class var textStyle3: UIFont {
     return UIFont.systemFont(ofSize: 14.0, weight: .bold)
-  }
-
-  class var textStyle2: UIFont {
-    return UIFont.systemFont(ofSize: 14.0, weight: .regular)
   }
 
   class var textoPequeO: UIFont {

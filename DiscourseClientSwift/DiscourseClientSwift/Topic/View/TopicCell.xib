@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="TopicCell" customModule="Discourse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoNew" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-TC-YlX">
+                        <rect key="frame" x="16" y="16" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="Q3W-bQ-ZZB"/>
+                            <constraint firstAttribute="height" constant="64" id="X6i-mh-Mp6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6B-aL-9uo">
+                        <rect key="frame" x="91" y="14" width="225" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="8KW-uy-3ub">
+                        <rect key="frame" x="91" y="61.5" width="194" height="20.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rvA-GT-yeD">
+                                <rect key="frame" x="0.0" y="0.0" width="63" height="20.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoSmallAnswers" translatesAutoresizingMaskIntoConstraints="NO" id="tzQ-xb-Hxw">
+                                        <rect key="frame" x="0.0" y="0.0" width="17" height="20.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRS-8c-iFd">
+                                        <rect key="frame" x="21" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tZ5-yC-fQo">
+                                <rect key="frame" x="70" y="0.0" width="59" height="20.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoViewsSmall" translatesAutoresizingMaskIntoConstraints="NO" id="GQV-f6-kzL">
+                                        <rect key="frame" x="0.0" y="0.0" width="13" height="20.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6P-32-Sal">
+                                        <rect key="frame" x="17" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="H7E-H5-7At">
+                                <rect key="frame" x="136" y="0.0" width="58" height="20.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoSmallCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="BR9-BH-C5K">
+                                        <rect key="frame" x="0.0" y="0.0" width="12" height="20.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fo-Jw-Xil">
+                                        <rect key="frame" x="16" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="S6B-aL-9uo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="0tp-1H-9mN"/>
+                    <constraint firstItem="S6B-aL-9uo" firstAttribute="leading" secondItem="AMg-TC-YlX" secondAttribute="trailing" constant="11" id="2I2-Ja-4r5"/>
+                    <constraint firstItem="8KW-uy-3ub" firstAttribute="top" secondItem="S6B-aL-9uo" secondAttribute="bottom" constant="4" id="GuD-Qz-Ddu"/>
+                    <constraint firstItem="AMg-TC-YlX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="LnJ-72-aLH"/>
+                    <constraint firstAttribute="bottom" secondItem="8KW-uy-3ub" secondAttribute="bottom" constant="14" id="Luw-bp-uPa"/>
+                    <constraint firstAttribute="bottom" secondItem="AMg-TC-YlX" secondAttribute="bottom" constant="16" id="fUk-kK-gBk"/>
+                    <constraint firstAttribute="trailing" secondItem="S6B-aL-9uo" secondAttribute="trailing" constant="59" id="ok0-Nb-Rk2"/>
+                    <constraint firstItem="AMg-TC-YlX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="p0t-3j-tHF"/>
+                    <constraint firstItem="8KW-uy-3ub" firstAttribute="leading" secondItem="AMg-TC-YlX" secondAttribute="trailing" constant="11" id="tB4-EW-tqo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="AMg-TC-YlX" id="z0W-ve-Mp8"/>
+                <outlet property="lastPostLabel" destination="1fo-Jw-Xil" id="Urr-Yp-cla"/>
+                <outlet property="numPostersLabel" destination="e6P-32-Sal" id="frs-hv-lf7"/>
+                <outlet property="postCountLabel" destination="uRS-8c-iFd" id="qh3-wh-gjH"/>
+                <outlet property="titleTopicLabel" destination="S6B-aL-9uo" id="VWI-F2-7e8"/>
+            </connections>
+            <point key="canvasLocation" x="78.985507246376812" y="138.61607142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icoNew" width="64" height="64"/>
+        <image name="icoSmallAnswers" width="17" height="14"/>
+        <image name="icoSmallCalendar" width="12" height="14"/>
+        <image name="icoViewsSmall" width="13" height="14"/>
+    </resources>
+</document>

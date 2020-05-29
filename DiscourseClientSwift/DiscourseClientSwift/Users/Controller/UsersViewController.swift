@@ -15,7 +15,7 @@ final class UsersViewController: UIViewController {
 
     // MARK: - Properties
     private var directoryItems = [DirectoryItem]()
-    private let sizeImage = 50
+    private let sizeImage = 80
 
     // MARK: - Life cycle functions
     override func viewDidLoad() {

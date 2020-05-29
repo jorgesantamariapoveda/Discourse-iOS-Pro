@@ -31,7 +31,7 @@ final class UserCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Private functions
     private func setupUI() {
-        imageView.layer.cornerRadius = 40
+        imageView.layer.cornerRadius = 0.5 * imageView.frame.width
         nameLabel.font = .textStyle
         nameLabel.textColor = .black
     }
