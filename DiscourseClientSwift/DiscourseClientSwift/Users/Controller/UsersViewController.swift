@@ -10,16 +10,14 @@ import UIKit
 
 final class UsersViewController: UIViewController {
 
-    // MARK: - Propierties
+    // MARK: - IBOutlets
+    @IBOutlet weak var collectionView: UICollectionView!
 
-    @IBOutlet weak var tableView: UITableView!
-
-    private let idCell = "idCell"
+    // MARK: - Properties
     private var directoryItems = [DirectoryItem]()
     private let sizeImage = 50
 
-    // MARK: - Basic functions
-
+    // MARK: - Life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,17 +26,64 @@ final class UsersViewController: UIViewController {
     }
 }
 
-// MARK: - Setups
-
+// MARK: - SetupUI
 extension UsersViewController {
 
     private func setupUI() {
         self.title = "Usuarios"
 
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idCell)
+        let nib = UINib(nibName: "UserCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: UserCollectionViewCell.cellId)
+        collectionView.dataSource = self
+
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        flowLayout.sectionInset = UIEdgeInsets(top: 24, left: 26, bottom: 24, right: 26)
+        flowLayout.itemSize = CGSize(width: 94, height: 124)
+        flowLayout.estimatedItemSize = .zero
+        flowLayout.minimumInteritemSpacing = 27.5
+        flowLayout.minimumLineSpacing = 18
     }
+}
+
+// MARK: - UICollectionViewDelegate
+extension UsersViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return directoryItems.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+                            withReuseIdentifier: UserCollectionViewCell.cellId,
+                            for: indexPath) as? UserCollectionViewCell else { return UICollectionViewCell() }
+
+        let user = directoryItems[indexPath.row].user
+        cell.nameLabel.text = user.username
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let sizeImage = self?.sizeImage else { return }
+            let avatar = user.avatar.replacingOccurrences(of: "{size}", with: String(sizeImage))
+            let pathAvatar = "https://mdiscourse.keepcoding.io\(avatar)"
+
+            guard let urlAvatar = URL(string: pathAvatar) else { return }
+            // Aquí se produce realmente el proceso costoso
+            let data = try? Data.init(contentsOf: urlAvatar)
+
+            DispatchQueue.main.async {
+                if let data = data {
+                    let image = UIImage(data: data)
+                    cell.imageView?.image = image
+                    cell.setNeedsLayout()
+                }
+            }
+        }
+        
+        return cell
+    }
+
+}
+
+// MARK: - API operations
+extension UsersViewController {
 
     private func setupData() {
         getUsers { [weak self] (result) in
@@ -52,15 +97,10 @@ extension UsersViewController {
                 print(error.localizedDescription)
             case .success(let directoryItems):
                 self?.directoryItems = directoryItems
-                self?.tableView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
     }
-}
-
-// MARK: - API operations
-
-extension UsersViewController {
 
     private func getUsers(completion: @escaping (Result<[DirectoryItem], Error>) -> Void) {
         let configuration = URLSessionConfiguration.default
@@ -112,57 +152,4 @@ extension UsersViewController {
 
 }
 
-// MARK: - UITableViewDataSource
 
-extension UsersViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return directoryItems.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = directoryItems[indexPath.row].user
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath)
-        cell.textLabel?.text = user.username
-
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let sizeImage = self?.sizeImage else { return }
-            let avatar = user.avatar.replacingOccurrences(of: "{size}", with: String(sizeImage))
-            let pathAvatar = "https://mdiscourse.keepcoding.io\(avatar)"
-
-            guard let urlAvatar = URL(string: pathAvatar) else { return }
-            // Aquí se produce realmente el proceso costoso
-            let data = try? Data.init(contentsOf: urlAvatar)
-
-            DispatchQueue.main.async {
-                if let data = data {
-                    let image = UIImage(data: data)
-                    cell.imageView?.image = image
-                    cell.setNeedsLayout()
-                }
-            }
-        }
-
-        return cell
-    }
-
-}
-
-extension UsersViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(integerLiteral: sizeImage)
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = directoryItems[indexPath.row].user
-
-        let detailVC = DetailUserViewController()
-        detailVC.setUsername(user.username)
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-}

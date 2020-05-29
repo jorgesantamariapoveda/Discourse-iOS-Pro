@@ -55,7 +55,6 @@ extension DetailUserViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let user):
-                print(user)
                 self?.idLabel.text = "Id: \(user.id)"
                 if user.canEditName == true {
                     self?.nameLabel.isHidden = true

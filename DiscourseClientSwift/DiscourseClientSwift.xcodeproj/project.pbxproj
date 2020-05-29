@@ -17,6 +17,8 @@
 		CF3838E22430938E001F8FDE /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3838E02430938E001F8FDE /* DetailUserViewController.swift */; };
 		CF3838E32430938E001F8FDE /* DetailUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3838E12430938E001F8FDE /* DetailUserViewController.xib */; };
 		CF3CE73824407A6F00A9BC1D /* SingleTopicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CE73724407A6F00A9BC1D /* SingleTopicResponse.swift */; };
+		CF73F8942481504100F1B720 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73F8922481504100F1B720 /* UserCollectionViewCell.swift */; };
+		CF73F8952481504100F1B720 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF73F8932481504100F1B720 /* UserCollectionViewCell.xib */; };
 		CF7E9568247EF46C006A3F70 /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E9566247EF46C006A3F70 /* UIFont+Additions.swift */; };
 		CF7E9569247EF46C006A3F70 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E9567247EF46C006A3F70 /* UIColor+Additions.swift */; };
 		CF83C9222426229300BE7D48 /* LatestTopicsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF83C9212426229300BE7D48 /* LatestTopicsResponse.swift */; };
@@ -49,6 +51,8 @@
 		CF3838E02430938E001F8FDE /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
 		CF3838E12430938E001F8FDE /* DetailUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailUserViewController.xib; sourceTree = "<group>"; };
 		CF3CE73724407A6F00A9BC1D /* SingleTopicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTopicResponse.swift; sourceTree = "<group>"; };
+		CF73F8922481504100F1B720 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF73F8932481504100F1B720 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF7E9566247EF46C006A3F70 /* UIFont+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
 		CF7E9567247EF46C006A3F70 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		CF83C9212426229300BE7D48 /* LatestTopicsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTopicsResponse.swift; sourceTree = "<group>"; };
@@ -208,9 +212,9 @@
 		CF324961247F0BD1004A603E /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				CF324962247F0BEC004A603E /* Model */,
 				CF324964247F0BF9004A603E /* Controller */,
 				CF324963247F0BF2004A603E /* View */,
-				CF324962247F0BEC004A603E /* Model */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -228,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD1F38A2424B63D00740BB9 /* UsersViewController.xib */,
+				CF73F8932481504100F1B720 /* UserCollectionViewCell.xib */,
 				CF3838E12430938E001F8FDE /* DetailUserViewController.xib */,
 			);
 			path = View;
@@ -237,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD1F3892424B63D00740BB9 /* UsersViewController.swift */,
+				CF73F8922481504100F1B720 /* UserCollectionViewCell.swift */,
 				CF3838E02430938E001F8FDE /* DetailUserViewController.swift */,
 			);
 			path = Controller;
@@ -311,6 +317,7 @@
 				CFD1F38C2424B63D00740BB9 /* UsersViewController.xib in Resources */,
 				CF2CE22B2423799E007FA314 /* LaunchScreen.storyboard in Resources */,
 				CF2CE2282423799E007FA314 /* Assets.xcassets in Resources */,
+				CF73F8952481504100F1B720 /* UserCollectionViewCell.xib in Resources */,
 				CFD1F3882424B62C00740BB9 /* CategoriesViewController.xib in Resources */,
 				CFD1F3842424B61000740BB9 /* TopicsViewController.xib in Resources */,
 				CF83C92624262B1E00BE7D48 /* DetailTopicsViewController.xib in Resources */,
@@ -335,6 +342,7 @@
 				CF13616124278A43007495EE /* CreateTopicViewController.swift in Sources */,
 				CF13615D24276AFE007495EE /* UIViewController+Ext.swift in Sources */,
 				CFFE99DE242F6D1700D1A20B /* DirectoryItemsResponse.swift in Sources */,
+				CF73F8942481504100F1B720 /* UserCollectionViewCell.swift in Sources */,
 				CFD19E5E242A01740089D278 /* TopicDelegate.swift in Sources */,
 				CF83C92524262B1E00BE7D48 /* DetailTopicsViewController.swift in Sources */,
 				CF7E9568247EF46C006A3F70 /* UIFont+Additions.swift in Sources */,
