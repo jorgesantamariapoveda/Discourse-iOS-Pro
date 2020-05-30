@@ -54,13 +54,11 @@ extension TopicCell {
             numPostersLabel.text = model.getNumPosters()
             lastPostLabel.text = model.getLasPost()
 
-            let sizeImage = avatarImageView.frame.width
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let avatar = self?.viewModel?.getAvatar() else { return }
 
-                //! Mejorar lo del 64
-                let avatarWithSize = avatar.replacingOccurrences(of: "{size}", with: "\(sizeImage)")
-                let pathAvatar = "https://mdiscourse.keepcoding.io\(avatarWithSize)"
+                let avatarPoint = avatar.replacingOccurrences(of: "{size}", with: "64")
+                let pathAvatar = "https://mdiscourse.keepcoding.io\(avatarPoint)"
                 guard let urlAvatar = URL(string: pathAvatar) else { return }
 
                 // Aquí se produce realmente el proceso costoso
