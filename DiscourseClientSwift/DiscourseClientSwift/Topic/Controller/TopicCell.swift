@@ -10,6 +10,11 @@ import UIKit
 
 final class TopicCell: UITableViewCell {
 
+    // MARK: - Properties
+    static let cellId: String = String(describing: TopicCell.self)
+    private var topic: Topic?
+    private var avatar: String?
+
     // MARK: - IBOutlets
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleTopicLabel: UILabel!
@@ -17,12 +22,7 @@ final class TopicCell: UITableViewCell {
     @IBOutlet weak var numPostersLabel: UILabel!
     @IBOutlet weak var lastPostLabel: UILabel!
 
-    // MARK: - Properties
-    static let cellId: String = String(describing: TopicCell.self)
-    private var topic: Topic?
-    private var avatar: String?
-
-    // MARK: - Life cycle functions
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -38,7 +38,7 @@ final class TopicCell: UITableViewCell {
 
 }
 
-// MARK: - Setup
+// MARK: - Setups
 extension TopicCell {
 
     private func setupUI() {
@@ -54,22 +54,11 @@ extension TopicCell {
             titleTopicLabel.text = topic.title
             postCountLabel.text = "\(topic.postsCount)"
             numPostersLabel.text = "\(topic.posters.count)"
-
-            let inputStringDate = topic.lastPostedAt
-            let inputFormat = "YYYY-MM-dd'T'HH:mm:ss.SSSZ"
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "es_ES")
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            dateFormatter.dateFormat = inputFormat
-            // Generar la fecha a partir del string y el formato de entrada
-            guard let date = dateFormatter.date(from: inputStringDate) else { return }
-
-            // Generar el string en el format de fecha requerido
-            // Friday 17, January
-            let outputFormat = "MMM d"
-            dateFormatter.dateFormat = outputFormat
-            let outputStringDate = dateFormatter.string(from: date)
-            lastPostLabel.text = outputStringDate.capitalized
+            lastPostLabel.text = topic.lastPostedAt.convertStringDateToString(
+                            inputFormat: "YYYY-MM-dd'T'HH:mm:ss.SSSZ",
+                            outputFormat: "MMM d",
+                            identifierLocale: "es_ES",
+                            secondsFromGMT: 0)
 
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let avatar = self?.avatar else { return }

@@ -10,6 +10,9 @@ import UIKit
 
 final class DetailUserViewController: UIViewController {
 
+    // MARK: - Properties
+    private var userName: String!
+
     // MARK: - IBOutlets
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -17,19 +20,29 @@ final class DetailUserViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var updateButton: UIButton!
 
-    // MARK: - Properties
-    private var userName: String!
-
-    // MARK: - Life cycle functions
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setupData()
     }
+
+    // MARK: - IBActions
+    @IBAction func updateButtonTapped(_ sender: UIButton) {
+        guard let name = nameTextField.text else { return }
+        putNameToUserName(newName: name, userName: userName) { [weak self] (resul) in
+            if resul == true {
+                self?.showAlert(title: "PUT", message: "Name actualizado con éxito")
+            } else {
+                self?.showAlert(title: "PUT", message: "Error")
+            }
+        }
+    }
+
 }
 
-// MARK: - setupUI
+// MARK: - Setups
 extension DetailUserViewController {
 
     private func setupUI() {
@@ -40,30 +53,6 @@ extension DetailUserViewController {
         updateButton.layer.cornerRadius = 4.0
         updateButton.backgroundColor = UIColor(displayP3Red: 146/255.0, green: 178/255.0, blue: 121/255.0, alpha: 1.0)
         updateButton.tintColor = .white
-    }
-
-}
-
-// MARK: - Public functions
-extension DetailUserViewController {
-
-    func setUsername(_ userName: String) {
-        self.userName = userName
-    }
-}
-
-// MARK: - IBActions
-extension DetailUserViewController {
-
-    @IBAction func updateButtonTapped(_ sender: UIButton) {
-        guard let name = nameTextField.text else { return }
-        putNameToUserName(newName: name, userName: userName) { [weak self] (resul) in
-            if resul == true {
-                self?.showAlert(title: "PUT", message: "Name actualizado con éxito")
-            } else {
-                self?.showAlert(title: "PUT", message: "Error")
-            }
-        }
     }
 
 }
@@ -185,6 +174,13 @@ extension DetailUserViewController {
     
 }
 
+// MARK: - Public functions
+extension DetailUserViewController {
+
+    func setUsername(_ userName: String) {
+        self.userName = userName
+    }
+}
 
 
 

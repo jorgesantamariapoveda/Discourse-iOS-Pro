@@ -10,28 +10,43 @@ import UIKit
 
 final class DetailTopicsViewController: UIViewController {
 
-    // MARK: - Propierties
+    // MARK: - Properties
+    private var topic: Topic!
+    internal var delegate: TopicDelegate?
 
+    // MARK: - IBOutlets
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var postsCountLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
 
-    private var topic: Topic!
-    internal var delegate: TopicDelegate?
-
-    // MARK: - Basic functions
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setupData()
     }
+
+    // MARK: - IBActions
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        guard let id = topic?.id else { return }
+        deleteTopic(id: id) { [weak self] (result) in
+            // Al acceder a self dentro de un closure si no se especifica nada lo
+            // hará de modo strong generando una referencia fuerte e impidiendo
+            // que ARC realice su trabajo. Con [weak self] evitamos dicho comportamiento
+            if result == true {
+                self?.delegate?.deleteTopic()
+                self?.navigationController?.popViewController(animated: true)
+            } else {
+                self?.showAlert(title: "DELETE", message: CustomTypeError.unknowError.descripcion)
+            }
+        }
+    }
+
 }
 
 // MARK: - Setups
-
 extension DetailTopicsViewController {
 
     private func setupUI() {
@@ -64,38 +79,7 @@ extension DetailTopicsViewController {
 
 }
 
-// MARK: - Public functions
-
-extension DetailTopicsViewController {
-
-    func setTopic(_ topic: Topic) {
-        self.topic = topic
-    }
-
-}
-
-// MARK: - IBAction
-
-extension DetailTopicsViewController {
-
-    @IBAction func deleteButtonTapped(_ sender: Any) {
-        guard let id = topic?.id else { return }
-        deleteTopic(id: id) { [weak self] (result) in
-            // Al acceder a self dentro de un closure si no se especifica nada lo
-            // hará de modo strong generando una referencia fuerte e impidiendo
-            // que ARC realice su trabajo. Con [weak self] evitamos dicho comportamiento
-            if result == true {
-                self?.delegate?.deleteTopic()
-                self?.navigationController?.popViewController(animated: true)
-            } else {
-                self?.showAlert(title: "DELETE", message: CustomTypeError.unknowError.descripcion)
-            }
-        }
-    }
-}
-
 // MARK: - API operations
-
 extension DetailTopicsViewController {
 
     private func getCanDeleteTopic(id: Int, completion: @escaping (Result<Detail, Error>) -> Void) {
@@ -176,6 +160,15 @@ extension DetailTopicsViewController {
             }
         }
         dataTask.resume()
+    }
+
+}
+
+// MARK: - Public functions
+extension DetailTopicsViewController {
+
+    func setTopic(_ topic: Topic) {
+        self.topic = topic
     }
 
 }

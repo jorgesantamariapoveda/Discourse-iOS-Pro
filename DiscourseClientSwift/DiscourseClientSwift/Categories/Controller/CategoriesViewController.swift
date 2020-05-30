@@ -10,15 +10,14 @@ import UIKit
 
 final class CategoriesViewController: UIViewController {
 
-    // MARK: - Propierties
-
-    @IBOutlet weak var tableView: UITableView!
-
+    // MARK: - Properties
     private let idCell = "idCell"
     private var categories = [Category]()
 
-    // MARK: - Basic functions
+    // MARK: - IBOutlets
+    @IBOutlet weak var tableView: UITableView!
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +27,6 @@ final class CategoriesViewController: UIViewController {
 }
 
 // MARK: - Setups
-
 extension CategoriesViewController {
 
     private func setupUI() {
@@ -58,7 +56,6 @@ extension CategoriesViewController {
 }
 
 // MARK: - API operations
-
 extension CategoriesViewController {
 
     private func getCategories(completion: @escaping (Result<[Category], Error>) -> Void) {
@@ -108,7 +105,6 @@ extension CategoriesViewController {
 }
 
 // MARK: - UITableViewDataSource
-
 extension CategoriesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

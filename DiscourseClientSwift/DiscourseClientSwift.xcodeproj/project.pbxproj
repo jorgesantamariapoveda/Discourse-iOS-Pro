@@ -26,6 +26,10 @@
 		CF83C9222426229300BE7D48 /* LatestTopicsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF83C9212426229300BE7D48 /* LatestTopicsResponse.swift */; };
 		CF83C92524262B1E00BE7D48 /* DetailTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF83C92324262B1E00BE7D48 /* DetailTopicsViewController.swift */; };
 		CF83C92624262B1E00BE7D48 /* DetailTopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF83C92424262B1E00BE7D48 /* DetailTopicsViewController.xib */; };
+		CFA2ADC324825C6C0012F235 /* WelcomeTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADC124825C6C0012F235 /* WelcomeTopicCell.swift */; };
+		CFA2ADC424825C6C0012F235 /* WelcomeTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA2ADC224825C6C0012F235 /* WelcomeTopicCell.xib */; };
+		CFA2ADC6248266A90012F235 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADC5248266A90012F235 /* UITableView+Ext.swift */; };
+		CFA2ADC8248271C70012F235 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADC7248271C70012F235 /* String+Ext.swift */; };
 		CFA6EE402439DEE8007E80A4 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6EE3F2439DEE8007E80A4 /* UserResponse.swift */; };
 		CFD19E5E242A01740089D278 /* TopicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD19E5D242A01740089D278 /* TopicDelegate.swift */; };
 		CFD1F3832424B61000740BB9 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1F3812424B61000740BB9 /* TopicsViewController.swift */; };
@@ -62,6 +66,10 @@
 		CF83C9212426229300BE7D48 /* LatestTopicsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTopicsResponse.swift; sourceTree = "<group>"; };
 		CF83C92324262B1E00BE7D48 /* DetailTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopicsViewController.swift; sourceTree = "<group>"; };
 		CF83C92424262B1E00BE7D48 /* DetailTopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTopicsViewController.xib; sourceTree = "<group>"; };
+		CFA2ADC124825C6C0012F235 /* WelcomeTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTopicCell.swift; sourceTree = "<group>"; };
+		CFA2ADC224825C6C0012F235 /* WelcomeTopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTopicCell.xib; sourceTree = "<group>"; };
+		CFA2ADC5248266A90012F235 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		CFA2ADC7248271C70012F235 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		CFA6EE3F2439DEE8007E80A4 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		CFD19E5D242A01740089D278 /* TopicDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDelegate.swift; sourceTree = "<group>"; };
 		CFD1F3812424B61000740BB9 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +101,8 @@
 				CF7E9567247EF46C006A3F70 /* UIColor+Additions.swift */,
 				CF7E9566247EF46C006A3F70 /* UIFont+Additions.swift */,
 				CF13615C24276AFE007495EE /* UIViewController+Ext.swift */,
+				CFA2ADC5248266A90012F235 /* UITableView+Ext.swift */,
+				CFA2ADC7248271C70012F235 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -197,6 +207,7 @@
 			children = (
 				CFD1F3822424B61000740BB9 /* TopicsViewController.xib */,
 				CF73F89724816D6900F1B720 /* TopicCell.xib */,
+				CFA2ADC224825C6C0012F235 /* WelcomeTopicCell.xib */,
 				CF83C92424262B1E00BE7D48 /* DetailTopicsViewController.xib */,
 				CF13616024278A43007495EE /* CreateTopicViewController.xib */,
 			);
@@ -209,6 +220,7 @@
 				CFD19E5C242A013B0089D278 /* Protocol */,
 				CFD1F3812424B61000740BB9 /* TopicsViewController.swift */,
 				CF73F89624816D6900F1B720 /* TopicCell.swift */,
+				CFA2ADC124825C6C0012F235 /* WelcomeTopicCell.swift */,
 				CF83C92324262B1E00BE7D48 /* DetailTopicsViewController.swift */,
 				CF13615F24278A43007495EE /* CreateTopicViewController.swift */,
 			);
@@ -219,8 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				CF324962247F0BEC004A603E /* Model */,
-				CF324964247F0BF9004A603E /* Controller */,
 				CF324963247F0BF2004A603E /* View */,
+				CF324964247F0BF9004A603E /* Controller */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -323,6 +335,7 @@
 				CFD1F38C2424B63D00740BB9 /* UsersViewController.xib in Resources */,
 				CF2CE22B2423799E007FA314 /* LaunchScreen.storyboard in Resources */,
 				CF2CE2282423799E007FA314 /* Assets.xcassets in Resources */,
+				CFA2ADC424825C6C0012F235 /* WelcomeTopicCell.xib in Resources */,
 				CF73F8952481504100F1B720 /* UserCollectionViewCell.xib in Resources */,
 				CFD1F3882424B62C00740BB9 /* CategoriesViewController.xib in Resources */,
 				CFD1F3842424B61000740BB9 /* TopicsViewController.xib in Resources */,
@@ -340,12 +353,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA2ADC6248266A90012F235 /* UITableView+Ext.swift in Sources */,
 				CF2CE21F2423799D007FA314 /* AppDelegate.swift in Sources */,
 				CF3838E22430938E001F8FDE /* DetailUserViewController.swift in Sources */,
 				CF2CE2212423799D007FA314 /* SceneDelegate.swift in Sources */,
 				CFD1F38B2424B63D00740BB9 /* UsersViewController.swift in Sources */,
 				CF83C9222426229300BE7D48 /* LatestTopicsResponse.swift in Sources */,
+				CFA2ADC8248271C70012F235 /* String+Ext.swift in Sources */,
 				CF7E9569247EF46C006A3F70 /* UIColor+Additions.swift in Sources */,
+				CFA2ADC324825C6C0012F235 /* WelcomeTopicCell.swift in Sources */,
 				CF13616124278A43007495EE /* CreateTopicViewController.swift in Sources */,
 				CF13615D24276AFE007495EE /* UIViewController+Ext.swift in Sources */,
 				CFFE99DE242F6D1700D1A20B /* DirectoryItemsResponse.swift in Sources */,

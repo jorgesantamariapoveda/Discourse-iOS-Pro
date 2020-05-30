@@ -10,14 +10,14 @@ import UIKit
 
 final class UsersViewController: UIViewController {
 
-    // MARK: - IBOutlets
-    @IBOutlet weak var collectionView: UICollectionView!
-
     // MARK: - Properties
     private var directoryItems = [DirectoryItem]()
     private let sizeImage = 80
 
-    // MARK: - Life cycle functions
+    // MARK: - IBOutlets
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +26,7 @@ final class UsersViewController: UIViewController {
     }
 }
 
-// MARK: - SetupUI
+// MARK: - Setups
 extension UsersViewController {
 
     private func setupUI() {

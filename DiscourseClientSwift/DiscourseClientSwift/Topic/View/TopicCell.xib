@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoNew" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-TC-YlX">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-TC-YlX">
                         <rect key="frame" x="16" y="16" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="Q3W-bQ-ZZB"/>
@@ -99,7 +99,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icoNew" width="64" height="64"/>
         <image name="icoSmallAnswers" width="17" height="14"/>
         <image name="icoSmallCalendar" width="12" height="14"/>
         <image name="icoViewsSmall" width="13" height="14"/>

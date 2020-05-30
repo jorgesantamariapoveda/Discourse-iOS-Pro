@@ -10,14 +10,13 @@ import UIKit
 
 final class TopicsViewController: UIViewController {
 
+    // MARK: - Properties
+    private var latestTopics: LatestTopicsResponse?
+
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
 
-    // MARK: - Properties
-    private let idCell = "idCell"
-    private var latestTopics: LatestTopicsResponse?
-
-    // MARK: - Life cycle functions
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,16 +42,11 @@ extension TopicsViewController {
     private func setupUI() {
         self.navigationItem.title = "Temas"
 
-        let nib = UINib(nibName: "TopicCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: TopicCell.cellId)
+        tableView.registerCellWithNibName("TopicCell", cellId: TopicCell.cellId)
+        tableView.registerCellWithNibName("WelcomeTopicCell", cellId: WelcomeTopicCell.cellId)
         tableView.dataSource = self
         tableView.delegate = self
     }
-
-}
-
-// MARK: - API operations
-extension TopicsViewController {
 
     private func setupData() {
         getLatestTopics { [weak self] (result) in
@@ -70,6 +64,11 @@ extension TopicsViewController {
             }
         }
     }
+
+}
+
+// MARK: - API operations
+extension TopicsViewController {
 
     private func getLatestTopics(completion: @escaping (Result<LatestTopicsResponse, Error>) -> Void) {
         let configuration = URLSessionConfiguration.default
@@ -130,19 +129,28 @@ extension TopicsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-                            withIdentifier: TopicCell.cellId,
-                            for: indexPath) as? TopicCell else {
-            return UITableViewCell()
-        }
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(
+                                withIdentifier: WelcomeTopicCell.cellId,
+                                for: indexPath) as? WelcomeTopicCell else {
+                return UITableViewCell()
+            }
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(
+                                withIdentifier: TopicCell.cellId,
+                                for: indexPath) as? TopicCell else {
+                return UITableViewCell()
+            }
 
-        //! Mejorar, esto es una chapuza
-        if let topic = latestTopics?.topicList.topics[indexPath.row] {
-            if let users = latestTopics?.users {
-                for user in users {
-                    if user.username == topic.lastPosterUsername {
-                        cell.configure(topic: topic, avatar: user.avatarTemplate)
-                        return cell
+            //! Mejorar, esto es una chapuza
+            if let topic = latestTopics?.topicList.topics[indexPath.row] {
+                if let users = latestTopics?.users {
+                    for user in users {
+                        if user.username == topic.lastPosterUsername {
+                            cell.configure(topic: topic, avatar: user.avatarTemplate)
+                            return cell
+                        }
                     }
                 }
             }
@@ -157,19 +165,31 @@ extension TopicsViewController: UITableViewDataSource {
 extension TopicsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let topic = latestTopics?.topicList.topics[indexPath.row] else { return }
+        //! Chapuza
+        if indexPath.row != 0 {
+            guard let topic = latestTopics?.topicList.topics[indexPath.row] else { return }
 
-        let detailVC = DetailTopicsViewController()
-        detailVC.delegate = self
-        detailVC.setTopic(topic)
+            let detailVC = DetailTopicsViewController()
+            detailVC.delegate = self
+            detailVC.setTopic(topic)
 
-        navigationController?.pushViewController(detailVC, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+            navigationController?.pushViewController(detailVC, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //! Chapuza
+        if indexPath.row == 0 {
+            return 151
+        } else {
+            return 96
+        }
     }
 
 }
 
-// MARK: - DetailTopicDelegate
+// MARK: - TopicDelegate
 extension TopicsViewController: TopicDelegate {
 
     func newTopic() {

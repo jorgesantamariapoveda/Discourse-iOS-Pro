@@ -10,14 +10,14 @@ import UIKit
 
 final class UserCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - Properties
+    static let cellId: String = String(describing: UserCollectionViewCell.self)
+
     // MARK: - IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
-    // MARK: - Properties
-    static let cellId: String = String(describing: UserCollectionViewCell.self)
-
-    // MARK: - Life cycle functions
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -29,7 +29,11 @@ final class UserCollectionViewCell: UICollectionViewCell {
         nameLabel.text = nil
     }
 
-    // MARK: - Private functions
+}
+
+// MARK: - Setups
+extension UserCollectionViewCell {
+
     private func setupUI() {
         imageView.layer.cornerRadius = 0.5 * imageView.frame.width
         nameLabel.font = .textStyle

@@ -10,46 +10,22 @@ import UIKit
 
 final class CreateTopicViewController: UIViewController {
 
-    // MARK: - Propierties
+    // MARK: - Properties
+    internal var delegate: TopicDelegate?
 
+    // MARK: - IBOutlets
     @IBOutlet weak var titleTopicTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
 
-    internal var delegate: TopicDelegate?
-
-    // MARK: - Basic functions
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
     }
-}
 
-// MARK: - Setup
-
-extension CreateTopicViewController {
-
-    private func setupUI() {
-        self.navigationItem.title = "Create"
-
-        titleTopicTextField.placeholder = "Type a title..."
-
-        submitButton.layer.cornerRadius = 4.0
-        submitButton.backgroundColor = UIColor(displayP3Red: 146/255.0, green: 178/255.0, blue: 121/255.0, alpha: 1.0)
-        submitButton.tintColor = .white
-
-        closeButton.layer.cornerRadius = 4.0
-        closeButton.backgroundColor = .systemPink
-        closeButton.tintColor = .white
-    }
-}
-
-// MARK: - IBAction
-
-extension CreateTopicViewController {
-
+    // MARK: - IBActions
     @IBAction func submitButtonTapped(_ sender: Any) {
         guard let tituloTopic = titleTopicTextField.text else { return }
         if !tituloTopic.isEmpty {
@@ -72,10 +48,28 @@ extension CreateTopicViewController {
     @IBAction func closeButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+
+}
+
+// MARK: - Setups
+extension CreateTopicViewController {
+
+    private func setupUI() {
+        self.navigationItem.title = "Create"
+
+        titleTopicTextField.placeholder = "Type a title..."
+
+        submitButton.layer.cornerRadius = 4.0
+        submitButton.backgroundColor = UIColor(displayP3Red: 146/255.0, green: 178/255.0, blue: 121/255.0, alpha: 1.0)
+        submitButton.tintColor = .white
+
+        closeButton.layer.cornerRadius = 4.0
+        closeButton.backgroundColor = .systemPink
+        closeButton.tintColor = .white
+    }
 }
 
 // MARK: - API operations
-
 extension CreateTopicViewController {
 
     private func postTopic(titulo: String, completion: @escaping (Bool) -> Void) {
