@@ -30,6 +30,9 @@
 		CFA2ADC424825C6C0012F235 /* WelcomeTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA2ADC224825C6C0012F235 /* WelcomeTopicCell.xib */; };
 		CFA2ADC6248266A90012F235 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADC5248266A90012F235 /* UITableView+Ext.swift */; };
 		CFA2ADC8248271C70012F235 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADC7248271C70012F235 /* String+Ext.swift */; };
+		CFA2ADCB248277EE0012F235 /* TopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADCA248277EE0012F235 /* TopicViewModel.swift */; };
+		CFA2ADCD24827F8A0012F235 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADCC24827F8A0012F235 /* CellViewModel.swift */; };
+		CFA2ADCF248280AE0012F235 /* WelcomeTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2ADCE248280AE0012F235 /* WelcomeTopicViewModel.swift */; };
 		CFA6EE402439DEE8007E80A4 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6EE3F2439DEE8007E80A4 /* UserResponse.swift */; };
 		CFD19E5E242A01740089D278 /* TopicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD19E5D242A01740089D278 /* TopicDelegate.swift */; };
 		CFD1F3832424B61000740BB9 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1F3812424B61000740BB9 /* TopicsViewController.swift */; };
@@ -70,6 +73,9 @@
 		CFA2ADC224825C6C0012F235 /* WelcomeTopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTopicCell.xib; sourceTree = "<group>"; };
 		CFA2ADC5248266A90012F235 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		CFA2ADC7248271C70012F235 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		CFA2ADCA248277EE0012F235 /* TopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewModel.swift; sourceTree = "<group>"; };
+		CFA2ADCC24827F8A0012F235 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		CFA2ADCE248280AE0012F235 /* WelcomeTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTopicViewModel.swift; sourceTree = "<group>"; };
 		CFA6EE3F2439DEE8007E80A4 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		CFD19E5D242A01740089D278 /* TopicDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDelegate.swift; sourceTree = "<group>"; };
 		CFD1F3812424B61000740BB9 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 			children = (
 				CF32495D247F0B28004A603E /* Model */,
 				CF32495E247F0B2F004A603E /* View */,
+				CFA2ADC9248277C00012F235 /* ViewModel */,
 				CF32495F247F0B35004A603E /* Controller */,
 			);
 			path = Topic;
@@ -264,6 +271,16 @@
 				CF3838E02430938E001F8FDE /* DetailUserViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CFA2ADC9248277C00012F235 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CFA2ADCC24827F8A0012F235 /* CellViewModel.swift */,
+				CFA2ADCA248277EE0012F235 /* TopicViewModel.swift */,
+				CFA2ADCE248280AE0012F235 /* WelcomeTopicViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CFD19E5C242A013B0089D278 /* Protocol */ = {
@@ -362,7 +379,9 @@
 				CFA2ADC8248271C70012F235 /* String+Ext.swift in Sources */,
 				CF7E9569247EF46C006A3F70 /* UIColor+Additions.swift in Sources */,
 				CFA2ADC324825C6C0012F235 /* WelcomeTopicCell.swift in Sources */,
+				CFA2ADCB248277EE0012F235 /* TopicViewModel.swift in Sources */,
 				CF13616124278A43007495EE /* CreateTopicViewController.swift in Sources */,
+				CFA2ADCF248280AE0012F235 /* WelcomeTopicViewModel.swift in Sources */,
 				CF13615D24276AFE007495EE /* UIViewController+Ext.swift in Sources */,
 				CFFE99DE242F6D1700D1A20B /* DirectoryItemsResponse.swift in Sources */,
 				CF73F8942481504100F1B720 /* UserCollectionViewCell.swift in Sources */,
@@ -376,6 +395,7 @@
 				CFA6EE402439DEE8007E80A4 /* UserResponse.swift in Sources */,
 				CFD1F3902424EDFF00740BB9 /* CategoriesResponse.swift in Sources */,
 				CF73F89824816D6900F1B720 /* TopicCell.swift in Sources */,
+				CFA2ADCD24827F8A0012F235 /* CellViewModel.swift in Sources */,
 				CFD1F3922424EE6100740BB9 /* CustomTypeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

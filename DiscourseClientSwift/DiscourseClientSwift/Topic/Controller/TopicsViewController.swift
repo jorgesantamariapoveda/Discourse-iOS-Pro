@@ -11,7 +11,7 @@ import UIKit
 final class TopicsViewController: UIViewController {
 
     // MARK: - Properties
-    private var latestTopics: LatestTopicsResponse?
+    private var viewModel: [CellViewModel] = []
 
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -42,8 +42,8 @@ extension TopicsViewController {
     private func setupUI() {
         self.navigationItem.title = "Temas"
 
-        tableView.registerCellWithNibName("TopicCell", cellId: TopicCell.cellId)
         tableView.registerCellWithNibName("WelcomeTopicCell", cellId: WelcomeTopicCell.cellId)
+        tableView.registerCellWithNibName("TopicCell", cellId: TopicCell.cellId)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -59,7 +59,16 @@ extension TopicsViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let latestTopics):
-                self?.latestTopics = latestTopics
+                self?.viewModel = latestTopics.topicList.topics.map({ (topic) -> TopicViewModel in
+                    var topicViewModel = TopicViewModel(topic: topic)
+                    for user in latestTopics.users {
+                        if user.username == topic.lastPosterUsername {
+                            topicViewModel.setAvatar(avatar: user.avatarTemplate)
+                        }
+                    }
+                    return topicViewModel
+                })
+                self?.viewModel.insert(WelcomeTopicViewModel(), at: 0)
                 self?.tableView.reloadData()
             }
         }
@@ -124,36 +133,17 @@ extension TopicsViewController {
 extension TopicsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let latestTopics = latestTopics else { return 0 }
-        return latestTopics.topicList.topics.count
+        return viewModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(
-                                withIdentifier: WelcomeTopicCell.cellId,
-                                for: indexPath) as? WelcomeTopicCell else {
-                return UITableViewCell()
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: WelcomeTopicCell.cellId) as? WelcomeTopicCell,
+            let _ = viewModel[indexPath.row] as? WelcomeTopicViewModel {
             return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(
-                                withIdentifier: TopicCell.cellId,
-                                for: indexPath) as? TopicCell else {
-                return UITableViewCell()
-            }
-
-            //! Mejorar, esto es una chapuza
-            if let topic = latestTopics?.topicList.topics[indexPath.row] {
-                if let users = latestTopics?.users {
-                    for user in users {
-                        if user.username == topic.lastPosterUsername {
-                            cell.configure(topic: topic, avatar: user.avatarTemplate)
-                            return cell
-                        }
-                    }
-                }
-            }
+        } else if let cell = tableView.dequeueReusableCell(withIdentifier: TopicCell.cellId) as? TopicCell,
+            let topic = viewModel[indexPath.row] as? TopicViewModel {
+            cell.configure(viewModel: topic)
+            return cell
         }
 
         return UITableViewCell()
@@ -165,13 +155,10 @@ extension TopicsViewController: UITableViewDataSource {
 extension TopicsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //! Chapuza
-        if indexPath.row != 0 {
-            guard let topic = latestTopics?.topicList.topics[indexPath.row] else { return }
-
+        if let topic = viewModel[indexPath.row] as? TopicViewModel {
             let detailVC = DetailTopicsViewController()
             detailVC.delegate = self
-            detailVC.setTopic(topic)
+            detailVC.setTopic(viewModel: topic)
 
             navigationController?.pushViewController(detailVC, animated: true)
             tableView.deselectRow(at: indexPath, animated: true)
@@ -179,12 +166,12 @@ extension TopicsViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //! Chapuza
-        if indexPath.row == 0 {
+        if let _ = viewModel[indexPath.row] as? WelcomeTopicViewModel {
             return 151
-        } else {
+        } else if let _ = viewModel[indexPath.row] as? TopicViewModel {
             return 96
         }
+        return 0
     }
 
 }

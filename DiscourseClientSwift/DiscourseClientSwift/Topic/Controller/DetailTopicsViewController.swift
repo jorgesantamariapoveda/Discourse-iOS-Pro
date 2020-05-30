@@ -11,7 +11,7 @@ import UIKit
 final class DetailTopicsViewController: UIViewController {
 
     // MARK: - Properties
-    private var topic: Topic!
+    private var viewModel: TopicViewModel?
     internal var delegate: TopicDelegate?
 
     // MARK: - IBOutlets
@@ -30,7 +30,7 @@ final class DetailTopicsViewController: UIViewController {
 
     // MARK: - IBActions
     @IBAction func deleteButtonTapped(_ sender: Any) {
-        guard let id = topic?.id else { return }
+        guard let id = viewModel?.getId() else { return }
         deleteTopic(id: id) { [weak self] (result) in
             // Al acceder a self dentro de un closure si no se especifica nada lo
             // hará de modo strong generando una referencia fuerte e impidiendo
@@ -54,16 +54,17 @@ extension DetailTopicsViewController {
         deleteButton.backgroundColor = UIColor(displayP3Red: 146/255.0, green: 178/255.0, blue: 121/255.0, alpha: 1.0)
         deleteButton.tintColor = .white
 
-        guard let topic = self.topic else { return }
-        idLabel.text = "Id: \(topic.id)"
-        titleTextView.text = "Title: \(topic.title)"
-        postsCountLabel.text = "Posts count: \(topic.postsCount)"
+        //! Mejorar este código, es feo con ganas
+        guard let viewModel = self.viewModel else { return }
+        idLabel.text = "Id: \(viewModel.getId())"
+        titleTextView.text = "Title: \(viewModel.getTitle())"
+        postsCountLabel.text = "Posts count: \(viewModel.getPostCount())"
         deleteButton.isHidden = true
     }
 
     private func setupData() {
-        guard let topic = self.topic else { return }
-        getCanDeleteTopic(id: topic.id) { [weak self] (resul) in
+        guard let viewModel = self.viewModel else { return }
+        getCanDeleteTopic(id: viewModel.getId()) { [weak self] (resul) in
             // Al acceder a self dentro de un closure si no se especifica nada lo
             // hará de modo strong generando una referencia fuerte e impidiendo
             // que ARC realice su trabajo. Con [weak self] evitamos dicho comportamiento
@@ -167,8 +168,8 @@ extension DetailTopicsViewController {
 // MARK: - Public functions
 extension DetailTopicsViewController {
 
-    func setTopic(_ topic: Topic) {
-        self.topic = topic
+    func setTopic(viewModel: TopicViewModel) {
+        self.viewModel = viewModel
     }
 
 }

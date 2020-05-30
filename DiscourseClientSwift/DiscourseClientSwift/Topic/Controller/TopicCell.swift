@@ -11,9 +11,8 @@ import UIKit
 final class TopicCell: UITableViewCell {
 
     // MARK: - Properties
+    private var viewModel: TopicViewModel?
     static let cellId: String = String(describing: TopicCell.self)
-    private var topic: Topic?
-    private var avatar: String?
 
     // MARK: - IBOutlets
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -30,8 +29,7 @@ final class TopicCell: UITableViewCell {
     }
 
     override func prepareForReuse() {
-        topic = nil
-        avatar = nil
+        viewModel = nil
 
         setupData()
     }
@@ -50,21 +48,18 @@ extension TopicCell {
     }
 
     private func setupData() {
-        if let topic = topic, let _ = avatar {
-            titleTopicLabel.text = topic.title
-            postCountLabel.text = "\(topic.postsCount)"
-            numPostersLabel.text = "\(topic.posters.count)"
-            lastPostLabel.text = topic.lastPostedAt.convertStringDateToString(
-                            inputFormat: "YYYY-MM-dd'T'HH:mm:ss.SSSZ",
-                            outputFormat: "MMM d",
-                            identifierLocale: "es_ES",
-                            secondsFromGMT: 0)
+        if let model = viewModel {
+            titleTopicLabel.text = model.getTitle()
+            postCountLabel.text = model.getPostCount()
+            numPostersLabel.text = model.getNumPosters()
+            lastPostLabel.text = model.getLasPost()
 
+            let sizeImage = avatarImageView.frame.width
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                guard let avatar = self?.avatar else { return }
+                guard let avatar = self?.viewModel?.getAvatar() else { return }
 
                 //! Mejorar lo del 64
-                let avatarWithSize = avatar.replacingOccurrences(of: "{size}", with: "64")
+                let avatarWithSize = avatar.replacingOccurrences(of: "{size}", with: "\(sizeImage)")
                 let pathAvatar = "https://mdiscourse.keepcoding.io\(avatarWithSize)"
                 guard let urlAvatar = URL(string: pathAvatar) else { return }
 
@@ -72,12 +67,11 @@ extension TopicCell {
                 let data = try? Data.init(contentsOf: urlAvatar)
                 DispatchQueue.main.async {
                     if let data = data {
-                        let image = UIImage(data: data)
-                        self?.avatarImageView.image = image
-                        //cell.setNeedsLayout()
+                        self?.avatarImageView.image = UIImage(data: data)
                     }
                 }
             }
+
         } else {
             titleTopicLabel.text = nil
             postCountLabel.text = nil
@@ -92,9 +86,8 @@ extension TopicCell {
 // MARK: - Public functions
 extension TopicCell {
 
-    func configure(topic: Topic, avatar: String) {
-        self.topic = topic
-        self.avatar = avatar
+    func configure(viewModel: TopicViewModel) {
+        self.viewModel = viewModel
 
         setupData()
     }

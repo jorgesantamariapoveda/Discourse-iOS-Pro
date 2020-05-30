@@ -30,7 +30,7 @@ final class UsersViewController: UIViewController {
 extension UsersViewController {
 
     private func setupUI() {
-        self.title = "Usuarios"
+        self.navigationItem.title = "Usuarios"
 
         let nib = UINib(nibName: "UserCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: UserCollectionViewCell.cellId)

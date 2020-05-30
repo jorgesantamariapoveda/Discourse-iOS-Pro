@@ -30,7 +30,7 @@ final class CategoriesViewController: UIViewController {
 extension CategoriesViewController {
 
     private func setupUI() {
-        self.title = "Categories"
+        self.navigationItem.title = "Categories"
 
         tableView.allowsSelection = false
         tableView.dataSource = self
