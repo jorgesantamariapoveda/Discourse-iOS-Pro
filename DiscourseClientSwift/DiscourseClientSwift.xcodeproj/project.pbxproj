@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF099C9F2483A56D0010F442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF099C9E2483A56D0010F442 /* SettingsViewController.swift */; };
 		CF13615D24276AFE007495EE /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13615C24276AFE007495EE /* UIViewController+Ext.swift */; };
 		CF13616124278A43007495EE /* CreateTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13615F24278A43007495EE /* CreateTopicViewController.swift */; };
 		CF13616224278A43007495EE /* CreateTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF13616024278A43007495EE /* CreateTopicViewController.xib */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF099C9E2483A56D0010F442 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CF13615C24276AFE007495EE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		CF13615F24278A43007495EE /* CreateTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopicViewController.swift; sourceTree = "<group>"; };
 		CF13616024278A43007495EE /* CreateTopicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTopicViewController.xib; sourceTree = "<group>"; };
@@ -101,6 +103,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF099C9C2483A51C0010F442 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CF099C9D2483A5330010F442 /* Controller */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CF099C9D2483A5330010F442 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF099C9E2483A56D0010F442 /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CF13615E24276B50007495EE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +154,7 @@
 				CF32495C247F0B20004A603E /* Topic */,
 				CF324961247F0BD1004A603E /* Users */,
 				CF324957247F0A2A004A603E /* Categories */,
+				CF099C9C2483A51C0010F442 /* Settings */,
 				CF2CE21E2423799D007FA314 /* AppDelegate.swift */,
 				CF2CE2202423799D007FA314 /* SceneDelegate.swift */,
 				CF2CE2272423799E007FA314 /* Assets.xcassets */,
@@ -393,6 +412,7 @@
 				CFD1F3832424B61000740BB9 /* TopicsViewController.swift in Sources */,
 				CFD1F38E2424C9D200740BB9 /* Constants.swift in Sources */,
 				CFA6EE402439DEE8007E80A4 /* UserResponse.swift in Sources */,
+				CF099C9F2483A56D0010F442 /* SettingsViewController.swift in Sources */,
 				CFD1F3902424EDFF00740BB9 /* CategoriesResponse.swift in Sources */,
 				CF73F89824816D6900F1B720 /* TopicCell.swift in Sources */,
 				CFA2ADCD24827F8A0012F235 /* CellViewModel.swift in Sources */,

@@ -11,7 +11,16 @@ import UIKit
 final class TopicsViewController: UIViewController {
 
     // MARK: - Properties
-    private var viewModel: [CellViewModel] = []
+    private var cellViewModels: [CellViewModel] = []
+
+    private let plusTopicButton: UIButton = {
+        let plusTopicButton = UIButton(type: .custom)
+        plusTopicButton.setImage(UIImage(named: "icoNew"), for: .normal)
+        plusTopicButton.addTarget(self, action: #selector(plusTopicButtonTapped), for: .touchUpInside)
+        return plusTopicButton
+    }()
+    private var leadingAnchorPlusTopicButton: NSLayoutConstraint?
+    private var trailingAnchorPlusTopicButton: NSLayoutConstraint?
 
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -24,8 +33,16 @@ final class TopicsViewController: UIViewController {
         setupData()
     }
 
-    // MARK: - IBActions
-    @IBAction func newTopicButtonTapped(_ sender: UIButton) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        //! Para evitar esto que siempre se ejecuta, lo suyo es montar una notificación
+        //! en el momento de cambiar el settings ¿?. Un delegado no me vale porque no
+        //! tengo acceso a ese viewController desde aquí
+        setupPositionNewTopicButton()
+    }
+
+    @objc private func plusTopicButtonTapped() {
         let createTopicVC = CreateTopicViewController()
         createTopicVC.delegate = self
 
@@ -42,10 +59,34 @@ extension TopicsViewController {
     private func setupUI() {
         self.navigationItem.title = "Temas"
 
-        tableView.registerCellWithNibName("WelcomeTopicCell", cellId: WelcomeTopicCell.cellId)
-        tableView.registerCellWithNibName("TopicCell", cellId: TopicCell.cellId)
+        tableView.registerCell(name: WelcomeTopicCell.cellId)
+        tableView.registerCell(name: TopicCell.cellId)
         tableView.dataSource = self
         tableView.delegate = self
+
+        self.view.addSubview(plusTopicButton)
+        self.view.sendSubviewToBack(tableView)
+
+        plusTopicButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            plusTopicButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
+//            plusTopicButton.widthAnchor.constraint(equalToConstant: 64),
+//            plusTopicButton.heightAnchor.constraint(equalToConstant: 64)
+        ])
+        leadingAnchorPlusTopicButton = plusTopicButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15)
+        trailingAnchorPlusTopicButton = plusTopicButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)
+
+        setupPositionNewTopicButton()
+    }
+
+    private func setupPositionNewTopicButton() {
+        if UserDefaults.standard.bool(forKey: "Zurdo") {
+            leadingAnchorPlusTopicButton?.isActive = true
+            trailingAnchorPlusTopicButton?.isActive = false
+        } else {
+            leadingAnchorPlusTopicButton?.isActive = false
+            trailingAnchorPlusTopicButton?.isActive = true
+        }
     }
 
     private func setupData() {
@@ -59,7 +100,7 @@ extension TopicsViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let latestTopics):
-                self?.viewModel = latestTopics.topicList.topics.map({ (topic) -> TopicViewModel in
+                self?.cellViewModels = latestTopics.topicList.topics.map({ (topic) -> TopicViewModel in
                     var topicViewModel = TopicViewModel(topic: topic)
                     for user in latestTopics.users {
                         if user.username == topic.lastPosterUsername {
@@ -68,7 +109,7 @@ extension TopicsViewController {
                     }
                     return topicViewModel
                 })
-                self?.viewModel.insert(WelcomeTopicViewModel(), at: 0)
+                self?.cellViewModels.insert(WelcomeTopicViewModel(), at: 0)
                 self?.tableView.reloadData()
             }
         }
@@ -133,15 +174,15 @@ extension TopicsViewController {
 extension TopicsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.count
+        return cellViewModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WelcomeTopicCell.cellId) as? WelcomeTopicCell,
-            let _ = viewModel[indexPath.row] as? WelcomeTopicViewModel {
+            let _ = cellViewModels[indexPath.row] as? WelcomeTopicViewModel {
             return cell
         } else if let cell = tableView.dequeueReusableCell(withIdentifier: TopicCell.cellId) as? TopicCell,
-            let topic = viewModel[indexPath.row] as? TopicViewModel {
+            let topic = cellViewModels[indexPath.row] as? TopicViewModel {
             cell.configure(viewModel: topic)
             return cell
         }
@@ -155,20 +196,20 @@ extension TopicsViewController: UITableViewDataSource {
 extension TopicsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let topic = viewModel[indexPath.row] as? TopicViewModel {
-            let detailVC = DetailTopicsViewController()
-            detailVC.delegate = self
-            detailVC.setTopic(viewModel: topic)
+        if let topic = cellViewModels[indexPath.row] as? TopicViewModel {
+            let detailTopicVC = DetailTopicsViewController()
+            detailTopicVC.delegate = self
+            detailTopicVC.setTopic(viewModel: topic)
 
-            navigationController?.pushViewController(detailVC, animated: true)
+            navigationController?.pushViewController(detailTopicVC, animated: true)
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let _ = viewModel[indexPath.row] as? WelcomeTopicViewModel {
+        if let _ = cellViewModels[indexPath.row] as? WelcomeTopicViewModel {
             return 151
-        } else if let _ = viewModel[indexPath.row] as? TopicViewModel {
+        } else if let _ = cellViewModels[indexPath.row] as? TopicViewModel {
             return 96
         }
         return 0

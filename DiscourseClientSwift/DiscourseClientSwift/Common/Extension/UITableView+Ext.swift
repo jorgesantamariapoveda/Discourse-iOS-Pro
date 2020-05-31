@@ -10,8 +10,8 @@ import UIKit
 
 extension UITableView {
 
-    func registerCellWithNibName(_ name: String, cellId: String) {
+    func registerCell(name: String) {
         let nib = UINib(nibName: name, bundle: nil)
-        register(nib, forCellReuseIdentifier: cellId)
+        register(nib, forCellReuseIdentifier: name)
     }
 }

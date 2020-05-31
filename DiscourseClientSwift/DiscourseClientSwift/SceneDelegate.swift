@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let topicsVC = TopicsViewController()
         let usersVC = UsersViewController()
         let categoriesVC = CategoriesViewController()
+        let settingsVC = SettingsViewController()
 
         topicsVC.tabBarItem = UITabBarItem(
                                 title: "Inicio",
@@ -34,19 +35,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(systemName: "tag.fill"), tag: 1)
 
+        settingsVC.tabBarItem = UITabBarItem(
+                                title: "Ajustes",
+                                image: UIImage(named: "ajustesSeleccionado"),
+                                selectedImage: UIImage(named: "ajustes"))
+
         let topicsNavigationController = UINavigationController(rootViewController: topicsVC)
         let usersNavigationController = UINavigationController(rootViewController: usersVC)
         let categoriesNavigationController = UINavigationController(rootViewController: categoriesVC)
+        let settingsNavigationController = UINavigationController(rootViewController: settingsVC)
 
         topicsNavigationController.navigationBar.barTintColor = .white82
         usersNavigationController.navigationBar.barTintColor = .white82
         categoriesNavigationController.navigationBar.barTintColor = .white82
+        settingsNavigationController.navigationBar.barTintColor = .white82
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
                                 topicsNavigationController,
                                 usersNavigationController,
-                                categoriesNavigationController
+                                categoriesNavigationController,
+                                settingsNavigationController
         ]
         tabBarController.tabBar.barTintColor = .white82
         tabBarController.tabBar.tintColor = .brownGrey

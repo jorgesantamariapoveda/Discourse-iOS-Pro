@@ -11,8 +11,8 @@ import UIKit
 final class TopicCell: UITableViewCell {
 
     // MARK: - Properties
-    private var viewModel: TopicViewModel?
     static let cellId: String = String(describing: TopicCell.self)
+    private var viewModel: TopicViewModel?
 
     // MARK: - IBOutlets
     @IBOutlet weak var avatarImageView: UIImageView!

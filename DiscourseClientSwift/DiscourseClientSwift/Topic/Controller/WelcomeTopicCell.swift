@@ -12,6 +12,7 @@ final class WelcomeTopicCell: UITableViewCell {
 
     // MARK: - Properties
     static let cellId: String = String(describing: WelcomeTopicCell.self)
+    private var viewModel: WelcomeTopicViewModel? // No se usa, pero se añade a fines de documentar
 
     // MARK: - IBOutlets
     @IBOutlet weak var background: UIView!

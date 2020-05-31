@@ -22,32 +22,16 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IyI-cK-exX">
-                    <rect key="frame" x="335" y="786" width="64" height="64"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="64" id="F13-Go-azq"/>
-                        <constraint firstAttribute="height" constant="64" id="W9a-IZ-fD7"/>
-                    </constraints>
-                    <state key="normal" image="icoNew"/>
-                    <connections>
-                        <action selector="newTopicButtonTapped:" destination="-1" eventType="touchUpInside" id="vX7-pB-5pI"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <constraints>
                 <constraint firstItem="hZu-xL-Vat" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8s9-JV-ALv"/>
                 <constraint firstItem="hZu-xL-Vat" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LO2-ug-7TZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hZu-xL-Vat" secondAttribute="trailing" id="Uay-Md-eZw"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IyI-cK-exX" secondAttribute="bottom" constant="12" id="Vi4-Ib-dGX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hZu-xL-Vat" secondAttribute="bottom" id="qCV-Zx-l2H"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IyI-cK-exX" secondAttribute="trailing" constant="15" id="y0C-u5-gam"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="133" y="154"/>
         </view>
     </objects>
-    <resources>
-        <image name="icoNew" width="64" height="64"/>
-    </resources>
 </document>
