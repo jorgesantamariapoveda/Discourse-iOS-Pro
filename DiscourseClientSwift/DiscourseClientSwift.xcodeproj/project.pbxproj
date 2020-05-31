@@ -18,6 +18,8 @@
 		CF3838E22430938E001F8FDE /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3838E02430938E001F8FDE /* DetailUserViewController.swift */; };
 		CF3838E32430938E001F8FDE /* DetailUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3838E12430938E001F8FDE /* DetailUserViewController.xib */; };
 		CF3CE73824407A6F00A9BC1D /* SingleTopicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CE73724407A6F00A9BC1D /* SingleTopicResponse.swift */; };
+		CF6E6FD824842A2E0041EC15 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E6FD724842A2E0041EC15 /* UserDefaultManager.swift */; };
+		CF6E6FDB24842FB90041EC15 /* HandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E6FDA24842FB90041EC15 /* HandType.swift */; };
 		CF73F8942481504100F1B720 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73F8922481504100F1B720 /* UserCollectionViewCell.swift */; };
 		CF73F8952481504100F1B720 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF73F8932481504100F1B720 /* UserCollectionViewCell.xib */; };
 		CF73F89824816D6900F1B720 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73F89624816D6900F1B720 /* TopicCell.swift */; };
@@ -62,6 +64,8 @@
 		CF3838E02430938E001F8FDE /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
 		CF3838E12430938E001F8FDE /* DetailUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailUserViewController.xib; sourceTree = "<group>"; };
 		CF3CE73724407A6F00A9BC1D /* SingleTopicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTopicResponse.swift; sourceTree = "<group>"; };
+		CF6E6FD724842A2E0041EC15 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		CF6E6FDA24842FB90041EC15 /* HandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandType.swift; sourceTree = "<group>"; };
 		CF73F8922481504100F1B720 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF73F8932481504100F1B720 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF73F89624816D6900F1B720 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
@@ -201,9 +205,10 @@
 		CF32495B247F0AB4004A603E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CF6E6FD924842FA80041EC15 /* Enums */,
+				CF6E6FD6248429EC0041EC15 /* Persistence */,
 				CF13615E24276B50007495EE /* Extension */,
 				CFD1F38D2424C9D200740BB9 /* Constants.swift */,
-				CFD1F3912424EE6100740BB9 /* CustomTypeError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -290,6 +295,23 @@
 				CF3838E02430938E001F8FDE /* DetailUserViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF6E6FD6248429EC0041EC15 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E6FD724842A2E0041EC15 /* UserDefaultManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		CF6E6FD924842FA80041EC15 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1F3912424EE6100740BB9 /* CustomTypeError.swift */,
+				CF6E6FDA24842FB90041EC15 /* HandType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		CFA2ADC9248277C00012F235 /* ViewModel */ = {
@@ -389,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF6E6FD824842A2E0041EC15 /* UserDefaultManager.swift in Sources */,
 				CFA2ADC6248266A90012F235 /* UITableView+Ext.swift in Sources */,
 				CF2CE21F2423799D007FA314 /* AppDelegate.swift in Sources */,
 				CF3838E22430938E001F8FDE /* DetailUserViewController.swift in Sources */,
@@ -410,6 +433,7 @@
 				CF3CE73824407A6F00A9BC1D /* SingleTopicResponse.swift in Sources */,
 				CFD1F3872424B62C00740BB9 /* CategoriesViewController.swift in Sources */,
 				CFD1F3832424B61000740BB9 /* TopicsViewController.swift in Sources */,
+				CF6E6FDB24842FB90041EC15 /* HandType.swift in Sources */,
 				CFD1F38E2424C9D200740BB9 /* Constants.swift in Sources */,
 				CFA6EE402439DEE8007E80A4 /* UserResponse.swift in Sources */,
 				CF099C9F2483A56D0010F442 /* SettingsViewController.swift in Sources */,

@@ -13,7 +13,7 @@ final class TopicsViewController: UIViewController {
     // MARK: - Properties
     private var cellViewModels: [CellViewModel] = []
 
-    private let plusTopicButton: UIButton = {
+    private let newTopicButton: UIButton = {
         let plusTopicButton = UIButton(type: .custom)
         plusTopicButton.setImage(UIImage(named: "icoNew"), for: .normal)
         plusTopicButton.addTarget(self, action: #selector(plusTopicButtonTapped), for: .touchUpInside)
@@ -64,23 +64,21 @@ extension TopicsViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        self.view.addSubview(plusTopicButton)
+        self.view.addSubview(newTopicButton)
         self.view.sendSubviewToBack(tableView)
 
-        plusTopicButton.translatesAutoresizingMaskIntoConstraints = false
+        newTopicButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            plusTopicButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
-//            plusTopicButton.widthAnchor.constraint(equalToConstant: 64),
-//            plusTopicButton.heightAnchor.constraint(equalToConstant: 64)
+            newTopicButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
         ])
-        leadingAnchorPlusTopicButton = plusTopicButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15)
-        trailingAnchorPlusTopicButton = plusTopicButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)
+        leadingAnchorPlusTopicButton = newTopicButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15)
+        trailingAnchorPlusTopicButton = newTopicButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)
 
         setupPositionNewTopicButton()
     }
 
     private func setupPositionNewTopicButton() {
-        if UserDefaults.standard.bool(forKey: "Zurdo") {
+        if UserDefaultManager.isLeftHand() {
             leadingAnchorPlusTopicButton?.isActive = true
             trailingAnchorPlusTopicButton?.isActive = false
         } else {

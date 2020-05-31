@@ -16,11 +16,13 @@ final class SettingsViewController: UIViewController {
         segmentedControl.insertSegment(withTitle: "Zurdo", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "Diestro", at: 1, animated: false)
         segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
-        if (UserDefaults.standard.bool(forKey: "Zurdo")) {
+
+        if UserDefaultManager.isLeftHand() {
             segmentedControl.selectedSegmentIndex = 0
         } else {
             segmentedControl.selectedSegmentIndex = 1
         }
+
         return segmentedControl
     }()
 
@@ -61,9 +63,9 @@ final class SettingsViewController: UIViewController {
 
     @objc private func segmentedControlChanged() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            UserDefaults.standard.set(true, forKey: "Zurdo")
+            UserDefaultManager.setHandType(type: .letfHand)
         } else {
-            UserDefaults.standard.set(false, forKey: "Zurdo")
+            UserDefaultManager.setHandType(type: .rightHand)
         }
     }
 }
