@@ -1,6 +1,6 @@
 # Práctica de UI Avanzada
 
-Partiendo de la aplicación realizada en el módulo de _Concurrencia y Red_, aplicar el nuevo diseño realizado en el módulo de _UX Móvil & diseño de UI_
+Partiendo de la aplicación realizada en el módulo de _Concurrencia y Red_, aplicar el nuevo diseño realizado en el módulo de _UX Móvil & Diseño de UI_.
 
 ## Tecnologías
 
@@ -17,7 +17,7 @@ Partiendo de la aplicación realizada en el módulo de _Concurrencia y Red_, apl
 
 ##### Capturas de pantallas
 
-![homeL](./screens/homeL.png "Home left")
 ![homeR](./screens/homeR.png "Home right")
+![homeL](./screens/homeL.png "Home left")
 ![users](./screens/users.png "Users")
 ![settings](./screens/settings.png "Settings")
