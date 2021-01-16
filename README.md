@@ -6,8 +6,8 @@ Partiendo de la aplicación *Discourse* desarrollada anteriormente aplicar el nu
 - Xcode
 - Swift
 - MVVM
-- [Sketch] (https://www.sketch.com/)
-- [Zeplin] (https://zeplin.io/)
+- [Sketch](https://www.sketch.com/)
+- [Zeplin](https://zeplin.io/)
 - [Discourse API](https://docs.discourse.org/)
 
 ### Extras
