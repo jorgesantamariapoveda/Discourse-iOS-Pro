@@ -1,8 +1,6 @@
 ## Objetivo
 Partiendo de la aplicación *Discourse* desarrollada anteriormente aplicar el nuevo diseño realizado en el módulo de _UX Móvil & Diseño de UI_.
 
-## Tecnologías
-
 - Xcode
 - Swift
 - MVVM
