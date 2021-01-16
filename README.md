@@ -1,13 +1,14 @@
-# Práctica de UI Avanzada
-
-Partiendo de la aplicación realizada en el módulo de _Concurrencia y Red_, aplicar el nuevo diseño realizado en el módulo de _UX Móvil & Diseño de UI_.
+## Objetivo
+Partiendo de la aplicación *Discourse* desarrollada anteriormente aplicar el nuevo diseño realizado en el módulo de _UX Móvil & Diseño de UI_.
 
 ## Tecnologías
 
 - Xcode
 - Swift
-- Sketch
-- Zeplin
+- MVVM
+- [Sketch] (https://www.sketch.com/)
+- [Zeplin] (https://zeplin.io/)
+- [Discourse API](https://docs.discourse.org/)
 
 ### Extras
 
